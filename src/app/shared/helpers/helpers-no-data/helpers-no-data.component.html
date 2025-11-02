@@ -1,0 +1,13 @@
+<div>
+  <p>No data
+    @if (description) {
+      <span
+        class="pointer"
+        (click)="showDescription = !showDescription"
+      >R</span>
+    }
+  </p>
+  @if (showDescription) {
+    {{ description }}
+  }
+</div>
