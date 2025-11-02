@@ -2,3 +2,7 @@
 
 /* Importing Bootstrap SCSS file. */
 @import 'bootstrap/scss/bootstrap';
+
+.text-small {
+  font-size: 0.85rem !important;
+}

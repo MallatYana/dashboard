@@ -1,14 +1,10 @@
-import { ProjectStatuses } from './project-statuses';
+import { Project } from './project';
 
-export interface ProjectStatistics {
-  id: number,
-  name: string,
+export interface ProjectStatistics extends Project {
   tasksCompleted: number,
   tasksActive: number,
   tasksTotal: number,
   startDate: Date,
   endDate: Date,
   lastUpdateDate: Date,
-  projectStatus: ProjectStatuses;
-  projectDescription?: string;
 }

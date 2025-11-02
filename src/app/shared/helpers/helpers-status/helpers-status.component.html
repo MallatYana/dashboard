@@ -1,0 +1,27 @@
+@switch (status) {
+  @case (statuses.Pending) {
+    <div class="rounded bg-warning px-md-3 text-center">
+      <small class="text-white">Pending</small>
+    </div>
+  }
+  @case (statuses.Active) {
+    <div class="rounded bg-info px-md-3 text-center">
+      <small class="text-white">Active</small>
+    </div>
+  }
+  @case (statuses.Completed) {
+    <div class="rounded bg-success px-md-3 text-center">
+      <small class="text-white">Completed</small>
+    </div>
+  }
+  @case (statuses.Failed) {
+  <div class="rounded bg-warning px-md-3 text-center">
+    <small class="text-white">Failed</small>
+  </div>
+  }
+  @case (statuses.Abandoned) {
+  <div class="rounded bg-secondary px-md-3 text-center">
+    <small class="text-white">Abandoned</small>
+  </div>
+  }
+}
