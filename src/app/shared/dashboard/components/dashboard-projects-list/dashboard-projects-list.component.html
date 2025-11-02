@@ -1,3 +1,7 @@
-<app-dashboard-projects-list-item></app-dashboard-projects-list-item>
-<app-dashboard-projects-list-item></app-dashboard-projects-list-item>
-<app-dashboard-projects-list-item></app-dashboard-projects-list-item>
+<div class="">
+  @for (project of projects; track project) {
+    <div (click)="setUrl(project.id)">
+      <app-dashboard-projects-list-item [project]="project"></app-dashboard-projects-list-item>
+    </div>
+}
+</div>

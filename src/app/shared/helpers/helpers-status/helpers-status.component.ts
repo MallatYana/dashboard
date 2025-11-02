@@ -1,15 +1,15 @@
-import { Component, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { ProjectStatuses } from '../../../core/interfaces/project-statuses';
 
 @Component({
   selector: 'app-helpers-status',
   standalone: true,
-  imports: [],
   templateUrl: './helpers-status.component.html',
-  styleUrl: './helpers-status.component.scss'
+  styleUrl: './helpers-status.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class HelpersStatusComponent {
-  @Input() status?: number | ProjectStatuses;
+  @Input() status?: ProjectStatuses;
 
   statuses = ProjectStatuses;
 }

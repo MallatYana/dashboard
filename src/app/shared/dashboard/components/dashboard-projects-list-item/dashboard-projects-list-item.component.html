@@ -3,7 +3,7 @@
   [ngClass]="{ 'bg-light': isSelected }"
 >
   <div class="d-md-flex flex-md-row-reverse justify-content-between pt-4 px-4">
-    <app-helpers-status [status]="project.status"></app-helpers-status>
+    <app-helpers-status [status]="+project.status"></app-helpers-status>
     <div>
       <h3 class="fw-light pt-md-0 pt-2">{{ project.name }}</h3>
     </div>
