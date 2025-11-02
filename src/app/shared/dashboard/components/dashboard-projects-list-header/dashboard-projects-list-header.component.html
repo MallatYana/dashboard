@@ -1,0 +1,13 @@
+<div
+  class="border-bottom w-100"
+  [ngClass]="{ 'bg-gray-400': isSelected }"
+>
+  <div class="d-md-flex justify-content-between pt-4 pb-2 px-4">
+    <h2 class="fw-light pt-md-0 pt-2 d-block">TOTAL</h2>
+    <div>
+      <app-dashboard-projects-list-filters
+        (onFiltersChange)="onFilterChange($event)"
+      ></app-dashboard-projects-list-filters>
+    </div>
+  </div>
+</div>

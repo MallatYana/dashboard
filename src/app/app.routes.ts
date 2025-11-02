@@ -1,5 +1,4 @@
 import { Routes } from '@angular/router';
-import { DashboardPageComponent } from './pages/dashboard-page/dashboard-page.component';
 
 export const routes: Routes = [{
   path: '',
@@ -7,7 +6,13 @@ export const routes: Routes = [{
   children: [
     {
       path: 'dashboard',
-      component: DashboardPageComponent,
+      loadChildren: () =>
+        import('./shared/dashboard/dashboard.routes').then(m => m.dashboardRoutes)
+    },
+    {
+      path: 'dashboard/:id',
+      loadChildren: () =>
+        import('./shared/dashboard/dashboard.routes').then(m => m.dashboardRoutes)
     },
     {
       path: '**',

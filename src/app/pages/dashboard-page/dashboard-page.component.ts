@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { DashboardContainerComponent } from '../../shared/dashboard/components/dashboard-container/dashboard-container.component';
 
@@ -9,7 +9,4 @@ import { DashboardContainerComponent } from '../../shared/dashboard/components/d
   templateUrl: './dashboard-page.component.html',
   styleUrl: './dashboard-page.component.scss'
 })
-export class DashboardPageComponent implements OnInit {
-  ngOnInit() {
-  }
-}
+export class DashboardPageComponent { }
