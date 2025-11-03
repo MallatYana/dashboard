@@ -5,6 +5,7 @@ import { DashboardWidgetsStatusComponent } from '../dashboard-widgets-status/das
 import { DashboardWidgetsDateRangeComponent } from '../dashboard-widgets-date-range/dashboard-widgets-date-range.component';
 import { DashboardWidgetsTasksGraphComponent } from '../dashboard-widgets-tasks-graph/dashboard-widgets-tasks-graph.component';
 import { DashboardWidgetsStatusesGraphComponent } from '../dashboard-widgets-statuses-graph/dashboard-widgets-statuses-graph.component';
+import { DashboardWidgetsDatabaseConnectionComponent } from '../dashboard-widgets-database-connection/dashboard-widgets-database-connection.component';
 import { HelpersNoDataComponent } from '../../../../helpers/helpers-no-data/helpers-no-data.component';
 import { ProjectStatistics } from '../../../../../core/interfaces/project-statistics';
 import { DashboardFilters } from '../../../../../core/interfaces/dashboard-filters';
@@ -20,6 +21,7 @@ import { ProjectStatuses } from '../../../../../core/interfaces/project-statuses
     DashboardWidgetsDateRangeComponent,
     DashboardWidgetsTasksGraphComponent,
     DashboardWidgetsStatusesGraphComponent,
+    DashboardWidgetsDatabaseConnectionComponent,
     HelpersNoDataComponent
   ],
   templateUrl: './dashboard-widgets-container.component.html',

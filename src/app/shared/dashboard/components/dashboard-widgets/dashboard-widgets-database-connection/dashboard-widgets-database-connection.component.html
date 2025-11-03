@@ -1,0 +1,13 @@
+@let databaseConnection = databaseConnection$ | async;
+
+<app-helpers-single-widget
+  (remove)="onRemove()">
+  <div class="p-4 text-center">
+    @if (databaseConnection) {
+      <h3 class="h2 fw-bold">{{ databaseConnection.connection}}</h3>
+    } @else {
+      <app-helpers-no-data></app-helpers-no-data>
+    }
+    <p class="h4 fw-light">Database connection</p>
+  </div>
+</app-helpers-single-widget>

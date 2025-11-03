@@ -12,6 +12,9 @@
   @if (filteredProjects.length === 1 && selectedFilters.id) {
     <div class="row">
       <div class="col-md-4 mt-3">
+        <app-dashboard-widgets-database-connection></app-dashboard-widgets-database-connection>
+      </div>
+      <div class="col-md-4 mt-3">
         <app-dashboard-widgets-status [widgetData]="filteredProjects[0]!.status"></app-dashboard-widgets-status>
       </div>
       <div class="col-md-4 mt-3">
@@ -32,6 +35,9 @@
   @if (!selectedFilters.id && selectedFilters.status && selectedFilters.status.toString() !== 'undefined') {
     <div class="row">
       <div class="col-md-4 mt-3">
+        <app-dashboard-widgets-database-connection></app-dashboard-widgets-database-connection>
+      </div>
+      <div class="col-md-4 mt-3">
         <app-dashboard-widgets-status [widgetData]="filteredProjects[0]!.status"></app-dashboard-widgets-status>
       </div>
       <div class="col-md-4 mt-3">
@@ -50,6 +56,9 @@
     <div class="row">
       <div class="col-md-8 mt-3">
         <app-dashboard-widgets-statuses-graph></app-dashboard-widgets-statuses-graph>
+      </div>
+      <div class="col-md-4 mt-3">
+        <app-dashboard-widgets-database-connection></app-dashboard-widgets-database-connection>
       </div>
       <div class="col-md-4 mt-3">
         <app-dashboard-widgets-last-update [widgetData]="lastUpdateTimeWidgetData"></app-dashboard-widgets-last-update>

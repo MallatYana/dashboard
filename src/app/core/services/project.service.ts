@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { catchError, delay, map, Observable, throwError } from 'rxjs';
+import { catchError, delay, interval, map, Observable, throwError } from 'rxjs';
 import { ProjectStatistics } from '../interfaces/project-statistics';
 import { ProjectStatisticsDirty } from '../interfaces/project-statistics-dirty';
-import {HelperService} from "./helper.service";
+import { HelperService } from './helper.service';
 
 @Injectable({
   providedIn: 'root'
@@ -31,5 +31,15 @@ export class ProjectService {
       lastUpdateDate: this.helperService.cleanDate(item.lastUpdateDate),
     }
     return { ...item, ...clearDate };
+  }
+
+  getDataPolling(): Observable<{ connection: string }> {
+    return interval(5000).pipe(
+      map(() => ({
+        connection: this.helperService.databaseConnection[
+          Math.floor(Math.random() * 3)
+          ]
+      }))
+    );
   }
 }
