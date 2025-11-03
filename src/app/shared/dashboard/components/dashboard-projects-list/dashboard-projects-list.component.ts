@@ -2,7 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { DashboardProjectsListItemComponent } from '../dashboard-projects-list-item/dashboard-projects-list-item.component';
 import { DashboardProjectsListHeaderComponent } from '../dashboard-projects-list-header/dashboard-projects-list-header.component';
 import { ProjectStatistics } from '../../../../core/interfaces/project-statistics';
-import { UrlService } from '../../../../core/services/url.service';
+import { FiltersService } from '../../../../core/services/filters.service';
 
 @Component({
   selector: 'app-dashboard-projects-list',
@@ -12,36 +12,17 @@ import { UrlService } from '../../../../core/services/url.service';
   styleUrl: './dashboard-projects-list.component.scss'
 })
 export class DashboardProjectsListComponent implements OnInit {
-  _projects?: ProjectStatistics[];
-  @Input() set projects(value: ProjectStatistics[]) {
-    this._projects = value;
-    if (value) this.checkUrl();
-  };
-  get projects() {
-    return this._projects as ProjectStatistics[];
-  }
+  @Input() projects: ProjectStatistics[] | null = [];
+  activeTab: string = '';
 
-  activeTable: string = '';
-  route: string = '';
+  setActiveTab(id: string) {
+    this.activeTab = id;
+    this.filterService.setFilters({ id: id })
+  }
 
   constructor(
-    private urlService: UrlService
+    private filterService: FiltersService
   ) { }
 
-  ngOnInit() {
-    this.route = this.urlService.getLastSegment();
-    this.activeTable = this.route === 'dashboard' ? '' : this.route;
-  }
-
-  checkUrl() {
-    const activeTabIdx = this._projects?.findIndex(project => project.id === this.route);
-    if (activeTabIdx === -1) this.setUrl('');
-  }
-
-  setUrl(id: string) {
-    this.route === 'dashboard'
-      ? this.urlService.addSegment(id)
-      : this.urlService.changeLastSegment(id);
-    this.activeTable = id;
-  }
+  ngOnInit() { }
 }

@@ -1,6 +1,5 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { DashboardFilters } from '../../../../core/interfaces/dashboard-filters';
 import { DashboardProjectsListFiltersComponent } from '../dashboard-projects-list-filters/dashboard-projects-list-filters.component';
 
 @Component({
@@ -12,8 +11,9 @@ import { DashboardProjectsListFiltersComponent } from '../dashboard-projects-lis
 })
 export class DashboardProjectsListHeaderComponent {
   @Input() isSelected: boolean = false;
+  @Output() onActiveTab = new EventEmitter<boolean>();
 
-  onFilterChange(filters: DashboardFilters) {
-
+  setActiveTab() {
+    this.onActiveTab.emit(true);
   }
 }

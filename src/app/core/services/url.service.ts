@@ -13,33 +13,24 @@ export class UrlService {
     private location: Location,
   ) { }
 
-  updateUlrByQueryParams(object: Object) {
-    const queryString = new URLSearchParams(object as any).toString();
-    const currentPath = this.location.path().split('?')[0];
-    this.location.go(`${currentPath}?${queryString}`);
+  updateUlrByQueryParams(params: Object) {
+    const newParams = this.createQueryParams(params);
+    const currentUrl = this.parseUrl();
+    const queryParamsTree = this.router.createUrlTree([], {
+      queryParams: { ...currentUrl, ...newParams }
+    });
+    const newUrl = this.serializer.serialize(queryParamsTree);
+    this.location.replaceState(newUrl);
   }
 
   parseUrl(): Params {
-    const { queryParams } = this.activatedRoute.snapshot;
+    const { queryParams } = this.activatedRoute.snapshot.queryParams;
     return queryParams;
   }
 
-  getLastSegment(): string {
-    const currentUrl = this.router.url;
-    const segments = currentUrl.split('/').filter(Boolean);
-    return segments[segments.length - 1] || '';
-  }
-
-  changeLastSegment(newSegment: string) {
-    const currentUrl = this.router.url;
-    const lastSegment = this.getLastSegment();
-    const newRoute = currentUrl.replace(lastSegment, newSegment);
-    this.location.replaceState(newRoute);
-  }
-
-  addSegment(newSegment: string) {
-    const currentUrl = this.router.url;
-    const newRoute = newSegment ? `${currentUrl}/${newSegment}` : `${currentUrl}`;
-    this.location.replaceState(newRoute);
+  createQueryParams<T extends object>(params: T) {
+    const nweParams = Object.fromEntries(Object.entries(params)
+      .filter(([key, value]) => !!value && value.toString() !== 'undefined'))
+    return nweParams;
   }
 }

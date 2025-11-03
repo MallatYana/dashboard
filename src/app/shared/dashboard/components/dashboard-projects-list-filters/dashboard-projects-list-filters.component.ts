@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { DashboardFilters } from '../../../../core/interfaces/dashboard-filters';
 import { DashboardProjectsListFilterStatusComponent } from '../dashboard-projects-list-filter-status/dashboard-projects-list-filter-status.component';
+import { FiltersService } from '../../../../core/services/filters.service';
 
 @Component({
   selector: 'app-dashboard-projects-list-filters',
@@ -10,11 +11,14 @@ import { DashboardProjectsListFilterStatusComponent } from '../dashboard-project
   styleUrl: './dashboard-projects-list-filters.component.scss'
 })
 export class DashboardProjectsListFiltersComponent {
-  @Input() selectedFilers: DashboardFilters = { } as DashboardFilters;
-  @Output() onFiltersChange = new EventEmitter<DashboardFilters>();
+  @Input() selectedFilters: DashboardFilters = { } as DashboardFilters;
 
-  onStatusChange(status: number) {
-    this.selectedFilers.status = status;
-    this.onFiltersChange.emit({ ...this.selectedFilers, status: status }); //ЭМИТИМ ИЛИ ДЕЛАЕМ РОУТ СЕРВИС
+  constructor(
+    private filterService: FiltersService
+  ) { }
+
+  onFilterChange(filters: Partial<DashboardFilters>) {
+    this.selectedFilters = { ...this.selectedFilters, ...filters };
+    this.filterService.setFilters(this.selectedFilters);
   }
 }

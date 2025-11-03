@@ -1,16 +1,19 @@
 <div class="">
   <div
     class="pointer hover-list"
-    (click)="setUrl('')"
   >
-    <app-dashboard-projects-list-header [isSelected]="activeTable === ''"></app-dashboard-projects-list-header>
+    <app-dashboard-projects-list-header
+      [isSelected]="activeTab === ''"
+      (onActiveTab)="setActiveTab('')"
+    ></app-dashboard-projects-list-header>
   </div>
   @for (project of projects; track project) {
     <div
       class="pointer hover-list"
-      (click)="setUrl(project.id)">
+      (click)="setActiveTab(project.id)"
+    >
       <app-dashboard-projects-list-item
-        [isSelected]="activeTable === project.id"
+        [isSelected]="activeTab === project.id"
         [project]="project"
       ></app-dashboard-projects-list-item>
     </div>

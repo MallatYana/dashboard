@@ -1,1 +1,4 @@
-<p>dashboard-projects-list-filters works!</p>
+<app-dashboard-projects-list-filter-status
+  [selectedStatus]="selectedFilters.status"
+  (statusChanged)="onFilterChange($event)"
+></app-dashboard-projects-list-filter-status>
