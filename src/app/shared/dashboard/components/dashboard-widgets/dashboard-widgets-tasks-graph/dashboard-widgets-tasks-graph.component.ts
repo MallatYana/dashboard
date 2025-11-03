@@ -47,9 +47,8 @@ export class DashboardWidgetsTasksGraphComponent implements OnChanges {
           trigger: 'item'
         },
         legend: {
-          bottom: 'center',
-          orient: 'vertical',
-          left: '0'
+          bottom: '5%',
+          left: 'center'
         },
         series: [
           {

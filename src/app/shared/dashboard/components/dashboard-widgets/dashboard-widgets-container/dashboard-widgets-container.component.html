@@ -26,7 +26,7 @@
       <div class="col-md-4 mt-3">
         <app-dashboard-widgets-date-range [widgetData]="[filteredProjects[0]!.startDate, filteredProjects[0]!.endDate]"></app-dashboard-widgets-date-range>
       </div>
-      <div class="col-md-8 mt-3">
+      <div class="col-md-4 mt-3">
         <app-dashboard-widgets-tasks-graph [widgetData]="taskGraphData"></app-dashboard-widgets-tasks-graph>
       </div>
     </div>
@@ -46,7 +46,7 @@
       <div class="col-md-4 mt-3">
         <app-dashboard-widgets-total-tasks [widgetData]="totalTasksWidgetData"></app-dashboard-widgets-total-tasks>
       </div>
-      <div class="col-md-8 mt-3">
+      <div class="col-md-4 mt-3">
         <app-dashboard-widgets-tasks-graph [widgetData]="taskGraphData"></app-dashboard-widgets-tasks-graph>
       </div>
     </div>
@@ -54,7 +54,7 @@
 
   @if ((!selectedFilters.status || selectedFilters.status.toString() === 'undefined') && !selectedFilters.id) {
     <div class="row">
-      <div class="col-md-8 mt-3">
+      <div class="col-md-4 mt-3">
         <app-dashboard-widgets-statuses-graph></app-dashboard-widgets-statuses-graph>
       </div>
       <div class="col-md-4 mt-3">
@@ -66,7 +66,7 @@
       <div class="col-md-4 mt-3">
         <app-dashboard-widgets-total-tasks [widgetData]="totalTasksWidgetData"></app-dashboard-widgets-total-tasks>
       </div>
-      <div class="col-md-8 mt-3">
+      <div class="col-md-4 mt-3">
         <app-dashboard-widgets-tasks-graph [widgetData]="taskGraphData"></app-dashboard-widgets-tasks-graph>
       </div>
     </div>
