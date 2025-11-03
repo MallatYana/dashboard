@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HelpersSingleWidgetComponent } from '../../../../helpers/helpers-single-widget/helpers-single-widget.component';
 import { HelpersNoDataComponent } from '../../../../helpers/helpers-no-data/helpers-no-data.component';
@@ -13,7 +13,8 @@ import { ProjectStatuses } from '../../../../../core/interfaces/project-statuses
     CommonModule
   ],
   templateUrl: './dashboard-widgets-status.component.html',
-  styleUrl: './dashboard-widgets-status.component.scss'
+  styleUrl: './dashboard-widgets-status.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class DashboardWidgetsStatusComponent {
   @Input() widgetData?: number;

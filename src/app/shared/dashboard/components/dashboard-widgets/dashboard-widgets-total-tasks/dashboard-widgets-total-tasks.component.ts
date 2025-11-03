@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
 import { HelpersSingleWidgetComponent } from '../../../../helpers/helpers-single-widget/helpers-single-widget.component';
 import { HelpersNoDataComponent } from '../../../../helpers/helpers-no-data/helpers-no-data.component';
 
@@ -10,7 +10,8 @@ import { HelpersNoDataComponent } from '../../../../helpers/helpers-no-data/help
     HelpersNoDataComponent,
   ],
   templateUrl: './dashboard-widgets-total-tasks.component.html',
-  styleUrl: './dashboard-widgets-total-tasks.component.scss'
+  styleUrl: './dashboard-widgets-total-tasks.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class DashboardWidgetsTotalTasksComponent {
   @Input() widgetData?: number;

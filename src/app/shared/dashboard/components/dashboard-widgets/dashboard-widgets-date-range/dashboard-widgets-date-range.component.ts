@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
 import { HelpersSingleWidgetComponent } from '../../../../helpers/helpers-single-widget/helpers-single-widget.component';
 import { HelpersNoDataComponent } from '../../../../helpers/helpers-no-data/helpers-no-data.component';
 import { DatePipe } from '@angular/common';
@@ -12,7 +12,8 @@ import { DatePipe } from '@angular/common';
     DatePipe
   ],
   templateUrl: './dashboard-widgets-date-range.component.html',
-  styleUrl: './dashboard-widgets-date-range.component.scss'
+  styleUrl: './dashboard-widgets-date-range.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class DashboardWidgetsDateRangeComponent {
   @Input() widgetData?: Date[];
