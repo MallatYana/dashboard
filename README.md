@@ -1,27 +1,12 @@
-# Tst
+# Dashboard Project
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.2.0.
+Architecture:  
+The architecture is based on dividing the application into two main sections: the project list and the widget list. Since all data is loaded at once rather than being fetched from the backend by ID, we can pass it directly to both sections.  
+Filters are managed via a BehaviorSubject, whose value is used in both sections through the AsyncPipe. Based on these values, query parameters are generated using Location to avoid unnecessary re-rendering.  
+Filtering is implemented by status (dropdown list) and by a specific project (by ID).
+The entire widget section is universal — it does not change when the selected project changes, only in response to user actions. It is also possible to filter projects by status and view statistics for all projects with the selected status.
 
-## Development server
-
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
-
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+AI was used for quickly finding small solutions, for example:
+- figuring out why DatePipe didn’t work before I “cleaned up” the data.
+- suggesting a better way to build the QueryParamsObject.
+- and, on a more trivial note, when I was too lazy to Google, it suggested how to write similar Bootstrap-style bindings in [ngClass] (e.g. [ngClass]="'col-' + customColumns").
