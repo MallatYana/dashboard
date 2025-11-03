@@ -15,7 +15,7 @@ import { DatePipe } from '@angular/common';
   styleUrl: './dashboard-widgets-last-update.component.scss'
 })
 export class DashboardWidgetsLastUpdateComponent {
-  @Input() widgetData?: Date;
+  @Input() widgetData?: { date: Date, name: string };
   @Output() removeWidget = new EventEmitter<string>();
 
   widgetName = 'lastUpdate';

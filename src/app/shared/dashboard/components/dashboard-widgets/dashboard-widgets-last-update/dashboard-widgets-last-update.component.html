@@ -1,13 +1,14 @@
 <app-helpers-single-widget
   (remove)="onRemove()">
   <div class="p-4 text-center">
-    @if (widgetData) {
-      <h3 class="display-5 fw-bold">{{ widgetData | date: 'MMM d, y' }}</h3>
+    @if (widgetData && widgetData.date) {
+      <h3 class="display-5 fw-bold">{{ widgetData.date | date: 'MMM d, y' }}</h3>
       } @else {
       <app-helpers-no-data></app-helpers-no-data>
     }
-    <p
-      class="h4 fw-light"
-    >Last update</p>
+    <p class="h4 fw-light p-0 m-0">Last update</p>
+    @if (widgetData && widgetData.name) {
+      <p class="fw-light">on project <span class="fw-bold">{{ widgetData.name }}</span></p>
+    }
   </div>
 </app-helpers-single-widget>

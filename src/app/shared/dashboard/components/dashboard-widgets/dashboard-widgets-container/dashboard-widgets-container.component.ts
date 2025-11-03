@@ -5,6 +5,7 @@ import { DashboardWidgetsStatusComponent } from '../dashboard-widgets-status/das
 import { DashboardWidgetsDateRangeComponent } from '../dashboard-widgets-date-range/dashboard-widgets-date-range.component';
 import { DashboardWidgetsTasksGraphComponent } from '../dashboard-widgets-tasks-graph/dashboard-widgets-tasks-graph.component';
 import { DashboardWidgetsStatusesGraphComponent } from '../dashboard-widgets-statuses-graph/dashboard-widgets-statuses-graph.component';
+import { HelpersNoDataComponent } from '../../../../helpers/helpers-no-data/helpers-no-data.component';
 import { ProjectStatistics } from '../../../../../core/interfaces/project-statistics';
 import { DashboardFilters } from '../../../../../core/interfaces/dashboard-filters';
 import { ProjectStatuses } from '../../../../../core/interfaces/project-statuses';
@@ -18,7 +19,8 @@ import { ProjectStatuses } from '../../../../../core/interfaces/project-statuses
     DashboardWidgetsStatusComponent,
     DashboardWidgetsDateRangeComponent,
     DashboardWidgetsTasksGraphComponent,
-    DashboardWidgetsStatusesGraphComponent
+    DashboardWidgetsStatusesGraphComponent,
+    HelpersNoDataComponent
   ],
   templateUrl: './dashboard-widgets-container.component.html',
   styleUrl: './dashboard-widgets-container.component.scss'
@@ -32,15 +34,43 @@ export class DashboardWidgetsContainerComponent implements OnChanges {
     if (changes['selectedFilters'] || changes['projects']) {
       if (this.projects && this.selectedFilters) {
         this.filteredProjects = this.projects.filter(project =>
-          !this.selectedFilters!.status && !this.selectedFilters!.id
+          (!this.selectedFilters!.status || this.selectedFilters!.status.toString() === 'undefined') && !this.selectedFilters!.id
           || !this.selectedFilters!.id && this.selectedFilters!.status === project.status
           || this.selectedFilters!.id && this.selectedFilters!.id === project.id
         )
       } else {
         this.filteredProjects = this.projects ? this.projects : [ ];
       }
+      if (this.filteredProjects.length) this.setData(this.filteredProjects);
     }
   }
 
   allStatuses = ProjectStatuses;
+
+  lastUpdateTimeWidgetData?: { date: Date, name: string };
+  totalTasksWidgetData?: number;
+
+  setData(projects: ProjectStatistics[]) {
+    this.totalTasksWidgetData = this.setTotalTasksData(projects);
+    this.lastUpdateTimeWidgetData = this.setLastUpdateTimeWidgetData(projects);
+  }
+
+  setTotalTasksData(projects: ProjectStatistics[]): number {
+    let totalTasks = 0;
+    projects.forEach(project => totalTasks += +project.tasksTotal);
+    return totalTasks;
+  }
+  setLastUpdateTimeWidgetData(projects: ProjectStatistics[]): { date: Date, name: string } | undefined {
+    let lastDate = projects[0].lastUpdateDate;
+    let lasUpdateName = projects[0].name;
+    projects.forEach(project => {
+      if (project.lastUpdateDate > lastDate) {
+        lastDate = project.lastUpdateDate;
+        lasUpdateName = project.name;
+      }
+    });
+    return { date: lastDate, name: projects.length > 1 ? lasUpdateName : '' };
+  }
+
+
 }

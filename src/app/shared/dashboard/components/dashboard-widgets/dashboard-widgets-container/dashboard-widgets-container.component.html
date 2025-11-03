@@ -1,32 +1,71 @@
-<div class="row">
+@if (selectedFilters && filteredProjects.length) {
   <div class="col-12 border-bottom border-top width-100 bg-white text-center py-2 mb-4">
     <h4 class="p-0 m-0">{{
-      selectedFilters && selectedFilters.id && filteredProjects.length === 1
+      selectedFilters.id && filteredProjects.length === 1
         ? filteredProjects[0].name
-        : selectedFilters && selectedFilters.status && selectedFilters.status.toString() !== 'undefined'
+          : selectedFilters.status && selectedFilters.status.toString() !== 'undefined'
           ? allStatuses[selectedFilters.status] + ' projects'
-          : 'Total projects'
-      }}</h4>
+        : 'Total projects'
+    }}</h4>
   </div>
 
-  @if (filteredProjects.length === 1) {
-    <div class="col-md-8 mt-3">
-      <app-dashboard-widgets-statuses-graph></app-dashboard-widgets-statuses-graph>
-    </div>
-    <div class="col-md-4 mt-3">
-      <app-dashboard-widgets-last-update [widgetData]="filteredProjects[0]!.lastUpdateDate"></app-dashboard-widgets-last-update>
-    </div>
-    <div class="col-md-4 mt-3">
-      <app-dashboard-widgets-total-tasks [widgetData]="filteredProjects[0]!.tasksTotal"></app-dashboard-widgets-total-tasks>
-    </div>
-    <div class="col-md-4 mt-3">
-      <app-dashboard-widgets-status [widgetData]="filteredProjects[0]!.status"></app-dashboard-widgets-status>
-    </div>
-    <div class="col-md-4 mt-3">
-      <app-dashboard-widgets-date-range [widgetData]="[filteredProjects[0]!.startDate, filteredProjects[0]!.endDate]"></app-dashboard-widgets-date-range>
-    </div>
-    <div class="col-md-8 mt-3">
-      <app-dashboard-widgets-tasks-graph></app-dashboard-widgets-tasks-graph>
+  @if (filteredProjects.length === 1 && selectedFilters.id) {
+    <div class="row">
+      <div class="col-md-4 mt-3">
+        <app-dashboard-widgets-status [widgetData]="filteredProjects[0]!.status"></app-dashboard-widgets-status>
+      </div>
+      <div class="col-md-4 mt-3">
+        <app-dashboard-widgets-last-update [widgetData]="lastUpdateTimeWidgetData"></app-dashboard-widgets-last-update>
+      </div>
+      <div class="col-md-4 mt-3">
+        <app-dashboard-widgets-total-tasks [widgetData]="totalTasksWidgetData"></app-dashboard-widgets-total-tasks>
+      </div>
+      <div class="col-md-4 mt-3">
+        <app-dashboard-widgets-date-range [widgetData]="[filteredProjects[0]!.startDate, filteredProjects[0]!.endDate]"></app-dashboard-widgets-date-range>
+      </div>
+      <div class="col-md-8 mt-3">
+        <app-dashboard-widgets-tasks-graph></app-dashboard-widgets-tasks-graph>
+      </div>
     </div>
   }
-</div>
+
+  @if (!selectedFilters.id && selectedFilters.status && selectedFilters.status.toString() !== 'undefined') {
+    <div class="row">
+      <div class="col-md-4 mt-3">
+        <app-dashboard-widgets-status [widgetData]="filteredProjects[0]!.status"></app-dashboard-widgets-status>
+      </div>
+      <div class="col-md-4 mt-3">
+        <app-dashboard-widgets-last-update [widgetData]="lastUpdateTimeWidgetData"></app-dashboard-widgets-last-update>
+      </div>
+      <div class="col-md-4 mt-3">
+        <app-dashboard-widgets-total-tasks [widgetData]="totalTasksWidgetData"></app-dashboard-widgets-total-tasks>
+      </div>
+      <div class="col-md-8 mt-3">
+        <app-dashboard-widgets-tasks-graph></app-dashboard-widgets-tasks-graph>
+      </div>
+    </div>
+  }
+
+  @if ((!selectedFilters.status || selectedFilters.status.toString() === 'undefined') && !selectedFilters.id) {
+    <div class="row">
+      <div class="col-md-8 mt-3">
+        <app-dashboard-widgets-statuses-graph></app-dashboard-widgets-statuses-graph>
+      </div>
+      <div class="col-md-4 mt-3">
+        <app-dashboard-widgets-last-update [widgetData]="lastUpdateTimeWidgetData"></app-dashboard-widgets-last-update>
+      </div>
+      <div class="col-md-4 mt-3">
+        <app-dashboard-widgets-total-tasks [widgetData]="totalTasksWidgetData"></app-dashboard-widgets-total-tasks>
+      </div>
+      <div class="col-md-8 mt-3">
+        <app-dashboard-widgets-tasks-graph></app-dashboard-widgets-tasks-graph>
+      </div>
+    </div>
+  }
+} @else {
+  <div class="p-5 row justify-content-center">
+    <div class="col-12">
+     <app-helpers-no-data></app-helpers-no-data>
+    </div>
+  </div>
+}
