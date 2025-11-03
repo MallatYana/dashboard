@@ -1,6 +1,6 @@
 <app-helpers-single-widget>
   <div class="p-4 text-center">
-    @if (widgetData) {
+    @if (widgetData && statuses[widgetData]) {
       <h3
         class="display-5 fw-bold"
         [ngClass]="'text-' + textColors[widgetData]"
