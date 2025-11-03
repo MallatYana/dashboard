@@ -24,7 +24,7 @@
         <app-dashboard-widgets-date-range [widgetData]="[filteredProjects[0]!.startDate, filteredProjects[0]!.endDate]"></app-dashboard-widgets-date-range>
       </div>
       <div class="col-md-8 mt-3">
-        <app-dashboard-widgets-tasks-graph></app-dashboard-widgets-tasks-graph>
+        <app-dashboard-widgets-tasks-graph [widgetData]="taskGraphData"></app-dashboard-widgets-tasks-graph>
       </div>
     </div>
   }
@@ -41,7 +41,7 @@
         <app-dashboard-widgets-total-tasks [widgetData]="totalTasksWidgetData"></app-dashboard-widgets-total-tasks>
       </div>
       <div class="col-md-8 mt-3">
-        <app-dashboard-widgets-tasks-graph></app-dashboard-widgets-tasks-graph>
+        <app-dashboard-widgets-tasks-graph [widgetData]="taskGraphData"></app-dashboard-widgets-tasks-graph>
       </div>
     </div>
   }
@@ -58,7 +58,7 @@
         <app-dashboard-widgets-total-tasks [widgetData]="totalTasksWidgetData"></app-dashboard-widgets-total-tasks>
       </div>
       <div class="col-md-8 mt-3">
-        <app-dashboard-widgets-tasks-graph></app-dashboard-widgets-tasks-graph>
+        <app-dashboard-widgets-tasks-graph [widgetData]="taskGraphData"></app-dashboard-widgets-tasks-graph>
       </div>
     </div>
   }

@@ -1,6 +1,8 @@
 <app-helpers-single-widget>
   @if (widgetData) {
-    <div echarts [options]="chartOption" class="chart"></div>
+    <div class="chart">
+      <div echarts [options]="chartOption"></div>
+  </div>
   } @else {
     <div>
       <p class="text-center pt-3 fw-bold">Tasks statistics</p>

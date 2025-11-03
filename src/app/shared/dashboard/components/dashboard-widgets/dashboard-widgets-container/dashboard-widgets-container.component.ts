@@ -49,9 +49,15 @@ export class DashboardWidgetsContainerComponent implements OnChanges {
 
   lastUpdateTimeWidgetData?: { date: Date, name: string };
   totalTasksWidgetData?: number;
+  taskGraphData?: {
+    tasksCompleted: number,
+    tasksActive: number,
+    tasksPending: number
+  };
 
   setData(projects: ProjectStatistics[]) {
     this.totalTasksWidgetData = this.setTotalTasksData(projects);
+    this.taskGraphData = this.setTasksGraphData(projects);
     this.lastUpdateTimeWidgetData = this.setLastUpdateTimeWidgetData(projects);
   }
 
@@ -60,7 +66,20 @@ export class DashboardWidgetsContainerComponent implements OnChanges {
     projects.forEach(project => totalTasks += +project.tasksTotal);
     return totalTasks;
   }
-  setLastUpdateTimeWidgetData(projects: ProjectStatistics[]): { date: Date, name: string } | undefined {
+
+  setTasksGraphData(projects: ProjectStatistics[]): { tasksCompleted: number, tasksActive: number, tasksPending: number } {
+    let totalTasks = 0;
+    let tasksCompleted = 0;
+    let tasksActive = 0;
+    projects.forEach(project => {
+      totalTasks += +project.tasksTotal;
+      tasksCompleted += +project.tasksCompleted;
+      tasksActive += +project.tasksActive;
+    })
+    return { tasksCompleted: tasksCompleted, tasksActive: tasksActive, tasksPending: totalTasks - tasksCompleted - tasksActive }
+  }
+
+  setLastUpdateTimeWidgetData(projects: ProjectStatistics[]): { date: Date, name: string } {
     let lastDate = projects[0].lastUpdateDate;
     let lasUpdateName = projects[0].name;
     projects.forEach(project => {
@@ -71,6 +90,4 @@ export class DashboardWidgetsContainerComponent implements OnChanges {
     });
     return { date: lastDate, name: projects.length > 1 ? lasUpdateName : '' };
   }
-
-
 }
