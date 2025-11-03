@@ -1,0 +1,15 @@
+<app-helpers-single-widget>
+  <div class="p-4 text-center">
+    @if (widgetData) {
+      <h3
+        class="display-5 fw-bold"
+        [ngClass]="'text-' + textColors[widgetData]"
+      >{{ statuses[widgetData] }}</h3>
+    } @else {
+      <app-helpers-no-data></app-helpers-no-data>
+    }
+    <p
+      class="h4 fw-light"
+    >Status</p>
+  </div>
+</app-helpers-single-widget>

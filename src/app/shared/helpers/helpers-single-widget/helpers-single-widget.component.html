@@ -1,0 +1,13 @@
+<div class="rounded shadow-sm border-gray bg-white position-relative">
+  <div class="single-widget-size">
+    <ng-content></ng-content>
+  </div>
+  <div class="position-absolute end-0 top-0">
+    <div class="text-center single-widget-remove-btn">
+      <button
+        (click)="removeWidget()"
+        class="btn btn-secondary"
+      >x</button>
+    </div>
+  </div>
+</div>

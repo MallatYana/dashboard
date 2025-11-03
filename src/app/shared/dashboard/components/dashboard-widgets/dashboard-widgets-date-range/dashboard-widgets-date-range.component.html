@@ -1,0 +1,13 @@
+<app-helpers-single-widget
+  (remove)="onRemove()">
+  <div class="p-4 text-center">
+    @if (widgetData) {
+    <h3 class="h2 fw-bold">{{ widgetData[0] | date: 	'dd.MM.yy' }} - {{ widgetData[1] | date: 	'dd.MM.yy' }} </h3>
+    } @else {
+    <app-helpers-no-data></app-helpers-no-data>
+    }
+    <p
+      class="h4 fw-light"
+    >Date range</p>
+  </div>
+</app-helpers-single-widget>

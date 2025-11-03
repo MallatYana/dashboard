@@ -1,0 +1,13 @@
+<app-helpers-single-widget
+  (remove)="onRemove()">
+  <div class="p-4 text-center">
+    @if (widgetData) {
+      <h3 class="display-5 fw-bold">{{ widgetData | date: 	'MMM d, y' }}</h3>
+      } @else {
+      <app-helpers-no-data></app-helpers-no-data>
+    }
+    <p
+      class="h4 fw-light"
+    >Last update</p>
+  </div>
+</app-helpers-single-widget>

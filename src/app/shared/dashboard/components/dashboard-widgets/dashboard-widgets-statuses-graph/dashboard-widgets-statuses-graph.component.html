@@ -1,0 +1,9 @@
+<app-helpers-single-widget>
+  <div echarts [options]="chartOption" class="chart"></div>
+  @if (widgetData) {
+    <div echarts [options]="chartOption" class="chart"></div>
+  } @else {
+    <p class="text-center pt-3 fw-bold">Project statuses</p>
+    <app-helpers-no-data></app-helpers-no-data>
+  }
+</app-helpers-single-widget>

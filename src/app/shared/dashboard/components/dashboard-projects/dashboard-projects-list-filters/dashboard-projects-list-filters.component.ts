@@ -1,7 +1,7 @@
 import {Component, OnInit } from '@angular/core';
-import { DashboardFilters } from '../../../../core/interfaces/dashboard-filters';
+import { DashboardFilters } from '../../../../../core/interfaces/dashboard-filters';
 import { DashboardProjectsListFilterStatusComponent } from '../dashboard-projects-list-filter-status/dashboard-projects-list-filter-status.component';
-import { FiltersService } from '../../../../core/services/filters.service';
+import { FiltersService } from '../../../../../core/services/filters.service';
 import { Observable, of } from 'rxjs';
 import { AsyncPipe } from '@angular/common';
 

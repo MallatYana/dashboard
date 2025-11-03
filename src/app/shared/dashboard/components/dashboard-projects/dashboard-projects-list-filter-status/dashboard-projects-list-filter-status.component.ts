@@ -1,8 +1,8 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { DashboardFilters } from '../../../../core/interfaces/dashboard-filters';
-import { ProjectStatuses } from '../../../../core/interfaces/project-statuses';
-import { HelpersStatusComponent } from '../../../helpers/helpers-status/helpers-status.component';
+import { DashboardFilters } from '../../../../../core/interfaces/dashboard-filters';
+import { ProjectStatuses } from '../../../../../core/interfaces/project-statuses';
+import { HelpersStatusComponent } from '../../../../helpers/helpers-status/helpers-status.component';
 
 @Component({
   selector: 'app-dashboard-projects-list-filter-status',

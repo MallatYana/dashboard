@@ -1,10 +1,10 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { DashboardProjectsListItemComponent } from '../dashboard-projects-list-item/dashboard-projects-list-item.component';
 import { DashboardProjectsListHeaderComponent } from '../dashboard-projects-list-header/dashboard-projects-list-header.component';
-import { ProjectStatistics } from '../../../../core/interfaces/project-statistics';
-import { FiltersService } from '../../../../core/services/filters.service';
+import { ProjectStatistics } from '../../../../../core/interfaces/project-statistics';
+import { FiltersService } from '../../../../../core/services/filters.service';
 import {Observable, of} from 'rxjs';
-import {DashboardFilters} from '../../../../core/interfaces/dashboard-filters';
+import {DashboardFilters} from '../../../../../core/interfaces/dashboard-filters';
 import { AsyncPipe } from '@angular/common';
 
 @Component({

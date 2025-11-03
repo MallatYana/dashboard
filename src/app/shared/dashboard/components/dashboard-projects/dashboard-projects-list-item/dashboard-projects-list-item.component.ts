@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Project } from '../../../../core/interfaces/project';
-import { HelpersStatusComponent } from '../../../helpers/helpers-status/helpers-status.component';
+import { Project } from '../../../../../core/interfaces/project';
+import { HelpersStatusComponent } from '../../../../helpers/helpers-status/helpers-status.component';
 
 @Component({
   selector: 'app-dashboard-projects-list-item',
