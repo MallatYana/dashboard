@@ -9,7 +9,7 @@ import { ProjectStatuses } from '../../../core/interfaces/project-statuses';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class HelpersStatusComponent {
-  @Input() status?: ProjectStatuses;
+  @Input() status?: number;
 
   statuses = ProjectStatuses;
 }

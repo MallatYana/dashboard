@@ -21,7 +21,7 @@ export class DashboardWidgetsStatusComponent {
 
   widgetName = 'status';
 
-  textColors = ['warning', 'info', 'success', 'danger', 'secondary', 'black']
+  textColors = ['black', 'warning', 'info', 'success', 'danger', 'secondary', 'black']
   statuses = ProjectStatuses;
 
   onRemove() {

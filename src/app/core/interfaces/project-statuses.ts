@@ -1,5 +1,5 @@
 export enum ProjectStatuses {
-  Pending,
+  Pending = 1,
   Active,
   Completed,
   Failed,

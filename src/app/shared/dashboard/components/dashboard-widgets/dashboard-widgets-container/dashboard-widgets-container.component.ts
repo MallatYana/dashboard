@@ -1,4 +1,4 @@
-import {Component, Input, OnChanges, OnInit, SimpleChanges} from '@angular/core';
+import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { DashboardWidgetsLastUpdateComponent } from '../dashboard-widgets-last-update/dashboard-widgets-last-update.component';
 import { DashboardWidgetsTotalTasksComponent } from '../dashboard-widgets-total-tasks/dashboard-widgets-total-tasks.component';
 import { DashboardWidgetsStatusComponent } from '../dashboard-widgets-status/dashboard-widgets-status.component';
@@ -7,6 +7,7 @@ import { DashboardWidgetsTasksGraphComponent } from '../dashboard-widgets-tasks-
 import { DashboardWidgetsStatusesGraphComponent } from '../dashboard-widgets-statuses-graph/dashboard-widgets-statuses-graph.component';
 import { ProjectStatistics } from '../../../../../core/interfaces/project-statistics';
 import { DashboardFilters } from '../../../../../core/interfaces/dashboard-filters';
+import { ProjectStatuses } from '../../../../../core/interfaces/project-statuses';
 
 @Component({
   selector: 'app-dashboard-widgets-container',
@@ -25,20 +26,21 @@ import { DashboardFilters } from '../../../../../core/interfaces/dashboard-filte
 export class DashboardWidgetsContainerComponent implements OnChanges {
   @Input() projects: ProjectStatistics[] | null = [];
   @Input() selectedFilters: DashboardFilters | null = { } as DashboardFilters;
-  filterdProjects: ProjectStatistics[] = [];
+  filteredProjects: ProjectStatistics[] = [];
 
   ngOnChanges(changes: SimpleChanges) {
     if (changes['selectedFilters'] || changes['projects']) {
       if (this.projects && this.selectedFilters) {
-        this.filterdProjects = this.projects.filter(project =>
+        this.filteredProjects = this.projects.filter(project =>
           !this.selectedFilters!.status && !this.selectedFilters!.id
           || !this.selectedFilters!.id && this.selectedFilters!.status === project.status
           || this.selectedFilters!.id && this.selectedFilters!.id === project.id
         )
       } else {
-        this.filterdProjects = this.projects ? this.projects : [ ];
+        this.filteredProjects = this.projects ? this.projects : [ ];
       }
-      console.log('filteredDate', this.filterdProjects)
     }
   }
+
+  allStatuses = ProjectStatuses;
 }
