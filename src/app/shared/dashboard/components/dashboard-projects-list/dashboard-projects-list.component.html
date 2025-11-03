@@ -1,21 +1,30 @@
-<div class="">
+@let selectedFilters = selectedFilters$ | async;
+
+<div>
   <div
     class="pointer hover-list"
   >
     <app-dashboard-projects-list-header
-      [isSelected]="activeTab === ''"
+      [isSelected]="!!(selectedFilters && selectedFilters.id === '')"
       (onActiveTab)="setActiveTab('')"
     ></app-dashboard-projects-list-header>
   </div>
   @for (project of projects; track project) {
-    <div
-      class="pointer hover-list"
-      (click)="setActiveTab(project.id)"
-    >
-      <app-dashboard-projects-list-item
-        [isSelected]="activeTab === project.id"
-        [project]="project"
-      ></app-dashboard-projects-list-item>
-    </div>
+    @if (
+      !selectedFilters || selectedFilters && (
+        selectedFilters.status === undefined || selectedFilters.status.toString() === 'undefined' || selectedFilters.status === project.status
+        )
+      ) {
+      <!--я перепишу этот ужасный ужас -->
+      <div
+        class="pointer hover-list"
+        (click)="setActiveTab(project.id)"
+      >
+        <app-dashboard-projects-list-item
+          [isSelected]="!!(selectedFilters && selectedFilters.id === project.id)"
+          [project]="project"
+        ></app-dashboard-projects-list-item>
+      </div>
+  }
 }
 </div>

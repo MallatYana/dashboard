@@ -14,6 +14,11 @@ export class FiltersService {
   private filter$ = new BehaviorSubject<DashboardFilters>({ } as DashboardFilters);
   filters = this.filter$.asObservable();
 
+  setUrlFilters() {
+    const filters1 = this.urlService.parseUrl();
+    this.filter$.next(filters1 as DashboardFilters)
+  }
+
   setFilters(filters: Partial<DashboardFilters>) {
     const currentFilters = this.getFilters();
     const newFilters = { ...currentFilters, ...filters };

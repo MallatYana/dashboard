@@ -15,16 +15,15 @@ export class UrlService {
 
   updateUlrByQueryParams(params: Object) {
     const newParams = this.createQueryParams(params);
-    const currentUrl = this.parseUrl();
     const queryParamsTree = this.router.createUrlTree([], {
-      queryParams: { ...currentUrl, ...newParams }
+      queryParams: { ...newParams }
     });
     const newUrl = this.serializer.serialize(queryParamsTree);
     this.location.replaceState(newUrl);
   }
 
   parseUrl(): Params {
-    const { queryParams } = this.activatedRoute.snapshot.queryParams;
+    const { queryParams } = this.activatedRoute.snapshot;
     return queryParams;
   }
 

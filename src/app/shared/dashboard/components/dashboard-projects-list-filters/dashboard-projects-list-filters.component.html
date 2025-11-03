@@ -1,4 +1,6 @@
+@let selectedFilters = selectedFilters$ | async;
+
 <app-dashboard-projects-list-filter-status
-  [selectedStatus]="selectedFilters.status"
+  [selectedStatus]="selectedFilters ? selectedFilters.status : undefined"
   (statusChanged)="onFilterChange($event)"
 ></app-dashboard-projects-list-filter-status>
