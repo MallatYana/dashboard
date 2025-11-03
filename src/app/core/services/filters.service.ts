@@ -15,13 +15,15 @@ export class FiltersService {
   filters = this.filter$.asObservable();
 
   setUrlFilters() {
-    const filters1 = this.urlService.parseUrl();
-    this.filter$.next(filters1 as DashboardFilters)
+    const filters = this.urlService.parseUrl();
+    this.filter$.next({ id: '', ...filters } as DashboardFilters)
   }
 
   setFilters(filters: Partial<DashboardFilters>) {
     const currentFilters = this.getFilters();
-    const newFilters = { ...currentFilters, ...filters };
+    const newFilters = filters.hasOwnProperty('status')
+      ? { id: '', ...filters } as DashboardFilters
+      : { ...currentFilters, ...filters };
     this.filter$.next(newFilters);
     this.urlService.updateUlrByQueryParams(newFilters);
   }

@@ -4,7 +4,9 @@ import { DashboardWidgetsContainerComponent } from '../dashboard-widgets/dashboa
 import { ProjectService } from '../../../../core/services/project.service';
 import { Observable, of } from 'rxjs';
 import { ProjectStatistics } from '../../../../core/interfaces/project-statistics';
+import { FiltersService } from '../../../../core/services/filters.service';
 import { AsyncPipe } from '@angular/common';
+import {DashboardFilters} from "../../../../core/interfaces/dashboard-filters";
 
 @Component({
   selector: 'app-dashboard-container',
@@ -19,12 +21,15 @@ import { AsyncPipe } from '@angular/common';
 })
 export class DashboardContainerComponent implements OnInit {
   constructor(
-    private projectService: ProjectService
+    private projectService: ProjectService,
+    private filterService: FiltersService
   ) { }
 
   projects$: Observable<ProjectStatistics[]> = of([] as ProjectStatistics[]);
+  selectedFilters$: Observable<DashboardFilters> = of({ } as DashboardFilters);
 
   ngOnInit() {
     this.projects$ = this.projectService.getItems();
+    this.selectedFilters$ = this.filterService.filters;
   }
 }

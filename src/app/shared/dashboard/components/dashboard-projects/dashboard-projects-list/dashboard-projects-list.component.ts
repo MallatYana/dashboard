@@ -1,10 +1,9 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { DashboardProjectsListItemComponent } from '../dashboard-projects-list-item/dashboard-projects-list-item.component';
 import { DashboardProjectsListHeaderComponent } from '../dashboard-projects-list-header/dashboard-projects-list-header.component';
 import { ProjectStatistics } from '../../../../../core/interfaces/project-statistics';
 import { FiltersService } from '../../../../../core/services/filters.service';
-import {Observable, of} from 'rxjs';
-import {DashboardFilters} from '../../../../../core/interfaces/dashboard-filters';
+import { DashboardFilters } from '../../../../../core/interfaces/dashboard-filters';
 import { AsyncPipe } from '@angular/common';
 
 @Component({
@@ -18,9 +17,9 @@ import { AsyncPipe } from '@angular/common';
   templateUrl: './dashboard-projects-list.component.html',
   styleUrl: './dashboard-projects-list.component.scss'
 })
-export class DashboardProjectsListComponent implements OnInit {
+export class DashboardProjectsListComponent {
   @Input() projects: ProjectStatistics[] | null = [];
-  selectedFilters$: Observable<DashboardFilters> = of({ } as DashboardFilters);
+  @Input() selectedFilters: DashboardFilters | null = { } as DashboardFilters;
 
   setActiveTab(id: string) {
     this.filterService.setFilters({ id: id })
@@ -29,8 +28,4 @@ export class DashboardProjectsListComponent implements OnInit {
   constructor(
     private filterService: FiltersService
   ) { }
-
-  ngOnInit() {
-    this.selectedFilters$ = this.filterService.filters;
-  }
 }

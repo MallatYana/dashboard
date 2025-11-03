@@ -1,8 +1,14 @@
 <div class="px-md-5 row">
   <div class="col-md-3 p-0 border-end">
-    <app-dashboard-projects-list [projects]="projects$ | async"></app-dashboard-projects-list>
+    <app-dashboard-projects-list
+      [projects]="projects$ | async"
+      [selectedFilters]="selectedFilters$ | async"
+    ></app-dashboard-projects-list>
   </div>
   <div class="col-md-9 p-5 d-flex gap-4 bg-gray-100">
-    <app-dashboard-widgets-container></app-dashboard-widgets-container>
+    <app-dashboard-widgets-container
+      [projects]="projects$ | async"
+      [selectedFilters]="selectedFilters$ | async"
+    ></app-dashboard-widgets-container>
   </div>
 </div>
