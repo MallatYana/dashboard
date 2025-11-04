@@ -7,22 +7,24 @@
       (onActiveTab)="setActiveTab('')"
     ></app-dashboard-projects-list-header>
   </div>
-  @for (project of projects; track project) {
-    @if (
-      !selectedFilters || selectedFilters && (
-        selectedFilters.status === undefined || selectedFilters.status.toString() === 'undefined' || selectedFilters.status === project.status
-        )
-      ) {
-      <!--я перепишу этот ужасный ужас -->
-      <div
-        class="pointer hover-list"
-        (click)="setActiveTab(project.id)"
-      >
-        <app-dashboard-projects-list-item
-          [isSelected]="!!(selectedFilters && selectedFilters.id === project.id)"
-          [project]="project"
-        ></app-dashboard-projects-list-item>
-      </div>
-  }
-}
+  <div class="vh-custom-calc overflow-y-scroll">
+    @for (project of projects; track project) {
+      @if (
+        !selectedFilters || selectedFilters && (
+          selectedFilters.status === undefined || selectedFilters.status.toString() === 'undefined' || selectedFilters.status === project.status
+          )
+        ) {
+        <!--я перепишу этот ужасный ужас -->
+        <div
+          class="pointer hover-list"
+          (click)="setActiveTab(project.id)"
+        >
+          <app-dashboard-projects-list-item
+            [isSelected]="!!(selectedFilters && selectedFilters.id === project.id)"
+            [project]="project"
+          ></app-dashboard-projects-list-item>
+        </div>
+      }
+    }
+  </div>
 </div>

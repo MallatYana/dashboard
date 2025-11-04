@@ -4,3 +4,14 @@
     transition: background-color 0.5s;
   }
 }
+
+.vh-custom-calc {
+  &::-webkit-scrollbar {
+    width: 0;
+  }
+}
+@media (max-width: 759px) {
+  .vh-custom-calc {
+    height: 300px !important;
+  }
+}
