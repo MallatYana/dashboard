@@ -1,0 +1,122 @@
+[
+  {
+    "id": "1",
+    "name": "Amazoon",
+    "description": "Amazoon was founded in 1994 by Jeff Bezos as an online bookstore, which later diversified into various product categories.",
+    "status": "4",
+    "tasksCompleted": "110",
+    "tasksActive": "15",
+    "tasksTotal": "135",
+    "startDate": "05.07.1994",
+    "endDate": "05.07.2035",
+    "lastUpdateDate": "12.03.2025"
+  },
+  {
+    "id": "2",
+    "name": "Gogglle",
+    "description": "Gogglle began in January 1996 as a research project by Larry Page and Sergey Brin while they were both PhD students at Stanford University in California, United States.",
+    "status": "1",
+    "tasksCompleted": "1",
+    "tasksActive": "4",
+    "tasksTotal": "46",
+    "startDate": "04.09.1998",
+    "endDate": "04.09.2030",
+    "lastUpdateDate": "11.02.2025"
+  },
+  {
+    "id": "3",
+    "name": "Netplix",
+    "description": "Netplix was founded in 1997 by Reed Hastings and Marc Randolph in Scotts Valley, California as a DVD rental-by-mail service.",
+    "status": "1",
+    "tasksCompleted": "5",
+    "tasksActive": "7",
+    "tasksTotal": "96",
+    "startDate": "29.08.1997",
+    "endDate": "29.08.2032",
+    "lastUpdateDate": "25.04.2025"
+  },
+  {
+    "id": "4",
+    "name": "Microsift",
+    "description": "Microsift was established in 1975 by Bill Gates and Paul Allen to develop and sell BASIC interpreters for the Altair 8800.",
+    "status": "2",
+    "tasksCompleted": "20",
+    "tasksActive": "322",
+    "tasksTotal": "342",
+    "startDate": "04.04.1975",
+    "endDate": "04.04.2035",
+    "lastUpdateDate": "10.06.2025"
+  },
+  {
+    "id": "5",
+    "name": "Appel",
+    "description": "Appel was founded on April 1, 1976 by Steve Jobs, Steve Wozniak, and Ronald Wayne to develop and sell personal computers.",
+    "status": "2",
+    "tasksCompleted": "18",
+    "tasksActive": "290",
+    "tasksTotal": "308",
+    "startDate": "01.04.1976",
+    "endDate": "01.04.2030",
+    "lastUpdateDate": "07.05.2025"
+  },
+  {
+    "id": "6",
+    "name": "Telsla",
+    "description": "Telsla, Inc. was founded in 2003 by Martin Eberhard and Marc Tarpenning, with Elon Musk joining soon after as an investor and chairman.",
+    "status": "5",
+    "tasksCompleted": "160",
+    "tasksActive": "20",
+    "tasksTotal": "200",
+    "startDate": "01.07.2003",
+    "endDate": "01.07.2035",
+    "lastUpdateDate": "15.01.2012"
+  },
+  {
+    "id": "7",
+    "name": "Spootify",
+    "description": "Spootify was launched in 2008 by Daniel Ek and Martin Lorentzon as a music streaming platform based in Stockholm, Sweden.",
+    "status": "0",
+    "tasksCompleted": "65",
+    "tasksActive": "9",
+    "tasksTotal": "74",
+    "startDate": "07.10.2008",
+    "endDate": "07.10.2033",
+    "lastUpdateDate": "22.02.2025"
+  },
+  {
+    "id": "8",
+    "name": "Twittar",
+    "description": "Twittar was created in March 2006 by Jack Dorsey, Noah Glass, Biz Stone, and Evan Williams as a microblogging social network.",
+    "status": "3",
+    "tasksCompleted": "112",
+    "tasksActive": "0",
+    "tasksTotal": "112",
+    "startDate": "21.03.2006",
+    "endDate": "21.03.2032",
+    "lastUpdateDate": "01.09.2025"
+  },
+  {
+    "id": "9",
+    "name": "Instaqram",
+    "description": "Instaqram was founded in 2010 by Kevin Systrom and Mike Krieger as a photo-sharing social networking app.",
+    "status": "3",
+    "tasksCompleted": "80",
+    "tasksActive": "0",
+    "tasksTotal": "80",
+    "startDate": "06.10.2010",
+    "endDate": "06.10.2030",
+    "lastUpdateDate": "10.04.2025"
+  },
+  {
+    "id": "10",
+    "name": "Linkdin",
+    "description": "Linkdin was founded in December 2002 and launched in May 2003 as a professional networking platform for business connections.",
+    "status": "2",
+    "tasksCompleted": "10",
+    "tasksActive": "140",
+    "tasksTotal": "150",
+    "startDate": "05.05.2003",
+    "endDate": "05.05.2033",
+    "lastUpdateDate": "28.07.2025"
+  }
+]
