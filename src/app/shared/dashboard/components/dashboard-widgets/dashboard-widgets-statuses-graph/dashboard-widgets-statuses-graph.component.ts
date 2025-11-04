@@ -25,7 +25,7 @@ echarts.use([BarChart, GridComponent, CanvasRenderer]);
   providers: [ provideEcharts()],
 })
 export class DashboardWidgetsStatusesGraphComponent {
-  @Input() widgetName = 'statusesGraph';
+  @Input() widgetName = 'status';
   @Input() widgetData?: {
     pending: number,
     active: number,

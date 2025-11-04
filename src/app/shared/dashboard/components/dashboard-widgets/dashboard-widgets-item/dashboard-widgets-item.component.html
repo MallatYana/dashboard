@@ -5,10 +5,16 @@
     ></app-dashboard-widgets-database-connection>
   }
   @case ('status') {
-    <app-dashboard-widgets-status
-      [widgetData]="statusWidgetData"
-      (removeWidget)="onRemove($event)"
-    ></app-dashboard-widgets-status>
+    @if (statusWidgetData) {
+      <app-dashboard-widgets-status
+        [widgetData]="statusWidgetData"
+        (removeWidget)="onRemove($event)"
+      ></app-dashboard-widgets-status>
+    } @else {
+        <app-dashboard-widgets-statuses-graph
+          (removeWidget)="onRemove($event)"
+        ></app-dashboard-widgets-statuses-graph>
+    }
   }
   @case ('lastUpdate') {
     <app-dashboard-widgets-last-update
@@ -27,11 +33,6 @@
       [widgetData]="dateRangeWidgetData"
       (removeWidget)="onRemove($event)"
     ></app-dashboard-widgets-date-range>
-  }
-  @case ('statusesGraph') {
-    <app-dashboard-widgets-statuses-graph
-      (removeWidget)="onRemove($event)"
-    ></app-dashboard-widgets-statuses-graph>
   }
   @case ('tasksGraph') {
     <app-dashboard-widgets-tasks-graph
