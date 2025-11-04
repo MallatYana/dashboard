@@ -1,5 +1,7 @@
 # Dashboard Project
 
+Demo: https://mallatyana.github.io/dashboard/dashboard
+
 Architecture:  
 The architecture is based on dividing the application into two main sections: the project list and the widget list. Since all data is loaded at once rather than being fetched from the backend by ID, we can pass it directly to both sections.  
 Filters are managed via a BehaviorSubject, whose value is used in both sections through the AsyncPipe. Based on these values, query parameters are generated using Location to avoid unnecessary re-rendering.  
