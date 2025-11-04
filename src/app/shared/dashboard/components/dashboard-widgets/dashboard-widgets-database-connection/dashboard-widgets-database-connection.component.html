@@ -6,7 +6,9 @@
     @if (databaseConnection) {
       <h3 class="h2 fw-bold">{{ databaseConnection.connection}}</h3>
     } @else {
-      <app-helpers-no-data></app-helpers-no-data>
+      <div class="mb-3">
+        <app-helpers-loaders-placeholder [width]="'250px'" [height]="'50px'"></app-helpers-loaders-placeholder>
+      </div>
     }
     <p class="h4 fw-light">Database connection</p>
   </div>

@@ -4,6 +4,7 @@ import { HelpersSingleWidgetComponent } from '../../../../helpers/helpers-single
 import { HelpersNoDataComponent } from '../../../../helpers/helpers-no-data/helpers-no-data.component';
 import { AsyncPipe } from '@angular/common';
 import { Observable, of } from 'rxjs';
+import { HelpersLoadersPlaceholderComponent } from '../../../../helpers/loaders/helpers-loaders-placeholder/helpers-loaders-placeholder.component';
 
 @Component({
   selector: 'app-dashboard-widgets-database-connection',
@@ -11,6 +12,7 @@ import { Observable, of } from 'rxjs';
   imports: [
     HelpersSingleWidgetComponent,
     HelpersNoDataComponent,
+    HelpersLoadersPlaceholderComponent,
     AsyncPipe
   ],
   templateUrl: './dashboard-widgets-database-connection.component.html',
