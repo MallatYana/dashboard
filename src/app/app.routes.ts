@@ -6,18 +6,24 @@ export const routes: Routes = [{
   children: [
     {
       path: 'dashboard',
-      loadChildren: () =>
-        import('./shared/dashboard/dashboard.routes').then(m => m.dashboardRoutes)
+      loadComponent: () =>
+        import('./pages/dashboard-page/dashboard-page.component').then(m => m.DashboardPageComponent),
+      data: {
+        title: 'Dashboard',
+      }
     },
     {
-      path: 'dashboard/:id',
-      loadChildren: () =>
-        import('./shared/dashboard/dashboard.routes').then(m => m.dashboardRoutes)
+      path: 'not-found',
+      loadComponent: () =>
+        import('./pages/not-found-page/not-found-page.component').then(m => m.NotFoundPageComponent),
+      data: {
+        title: '404',
+      }
     },
     {
       path: '**',
       pathMatch: 'full',
-      redirectTo: 'dashboard',
+      redirectTo: 'not-found',
     },
   ]
 }]
