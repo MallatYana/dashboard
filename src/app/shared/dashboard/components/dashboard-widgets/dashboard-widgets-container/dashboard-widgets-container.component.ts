@@ -2,6 +2,7 @@ import { Component, Input, OnChanges, SimpleChanges, OnInit } from '@angular/cor
 import { CdkDrag, CdkDragDrop, CdkDropList, moveItemInArray } from '@angular/cdk/drag-drop';
 import { HelpersNoDataComponent } from '../../../../helpers/helpers-no-data/helpers-no-data.component';
 import { DashboardWidgetsItemComponent } from '../dashboard-widgets-item/dashboard-widgets-item.component';
+import { DashboardWidgetsAddListComponent } from '../dashboard-widgets-add-list/dashboard-widgets-add-list.component';
 import { ProjectStatistics } from '../../../../../core/interfaces/project-statistics';
 import { DashboardFilters } from '../../../../../core/interfaces/dashboard-filters';
 import { ProjectStatuses } from '../../../../../core/constants/project-statuses';
@@ -14,6 +15,7 @@ import { WidgetList } from '../../../../../core/constants/widget-list';
     CdkDropList,
     CdkDrag,
     DashboardWidgetsItemComponent,
+    DashboardWidgetsAddListComponent,
     HelpersNoDataComponent
   ],
   templateUrl: './dashboard-widgets-container.component.html',
@@ -47,6 +49,10 @@ export class DashboardWidgetsContainerComponent implements OnChanges, OnInit {
 
   onRemoveWidget(name: string) {
     this.widgetsOrder = this.widgetsOrder.filter(item => item !== name);
+    this.changeOrder(this.widgetsOrder);
+  }
+  onAddWidget(name: string) {
+    this.widgetsOrder.push(name);
     this.changeOrder(this.widgetsOrder);
   }
   checkAndApplyOrder() {

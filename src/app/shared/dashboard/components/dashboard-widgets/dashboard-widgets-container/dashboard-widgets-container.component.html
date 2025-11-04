@@ -1,5 +1,5 @@
 @if (selectedFilters && filteredProjects.length) {
-  <div class="col-12 border-bottom border-top width-100 bg-white text-center py-2 mb-4">
+  <div class="col-12 border-bottom border-top width-100 bg-white text-center py-2 mb-3">
     <h4 class="p-0 m-0">{{
       selectedFilters.id && filteredProjects.length === 1
         ? filteredProjects[0].name
@@ -7,6 +7,12 @@
           ? allStatuses[selectedFilters.status] + ' projects'
         : 'Total projects'
     }}</h4>
+  </div>
+  <div class="mb-4">
+    <app-dashboard-widgets-add-list
+      [currentWidgets]="widgetsOrder"
+      (addWidget)="onAddWidget($event)"
+    ></app-dashboard-widgets-add-list>
   </div>
 
   <div (cdkDropListDropped)="drop($event)" cdkDropList cdkDropListOrientation="mixed" class="row">

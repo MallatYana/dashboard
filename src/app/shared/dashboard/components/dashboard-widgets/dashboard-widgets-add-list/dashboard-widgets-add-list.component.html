@@ -1,0 +1,8 @@
+<div class="d-flex">
+  @for (widgetName of addableWidgets; track widgetName) {
+    <button
+      class="ml-3 btn btn-outline-secondary custom-add-btn"
+      (click)="addNewWidget(widgetName)"
+    >{{ getLabel(widgetName) }}</button>
+  }
+</div>
