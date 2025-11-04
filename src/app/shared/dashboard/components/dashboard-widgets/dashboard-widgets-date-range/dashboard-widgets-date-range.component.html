@@ -2,7 +2,7 @@
   (remove)="onRemove()">
   <div class="p-4 text-center">
     @if (widgetData) {
-    <h3 class="h2 fw-bold">{{ widgetData[0] | date: 	'dd.MM.yyyy' }} - {{ widgetData[1] | date: 	'dd.MM.yyyy' }} </h3>
+    <h3 class="h3 fw-bold">{{ widgetData[0] | date: 	'dd.MM.yyyy' }} - {{ widgetData[1] | date: 	'dd.MM.yyyy' }} </h3>
     } @else {
     <app-helpers-no-data></app-helpers-no-data>
     }

@@ -84,7 +84,10 @@ export class DashboardWidgetsContainerComponent implements OnChanges, OnInit {
     this.totalTasksWidgetData = this.setTotalTasksData(projects);
     this.taskGraphData = this.setTasksGraphData(projects);
     this.lastUpdateTimeWidgetData = this.setLastUpdateTimeWidgetData(projects);
-    this.statusWidgetData = projects[0].status;
+    console.log(this.selectedFilters?.status)
+    this.statusWidgetData = this.selectedFilters && (this.selectedFilters.status && this.selectedFilters.status.toString() !== 'undefined' || this.selectedFilters.id)
+      ? projects[0].status
+      : undefined;
     this.dateRangeWidgetData = projects.length === 1
       ? [projects[0].startDate, projects[0].endDate]
       : undefined;
