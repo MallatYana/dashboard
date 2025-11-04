@@ -25,6 +25,7 @@ echarts.use([BarChart, GridComponent, CanvasRenderer]);
   providers: [ provideEcharts()],
 })
 export class DashboardWidgetsStatusesGraphComponent {
+  @Input() widgetName = 'statusesGraph';
   @Input() widgetData?: {
     pending: number,
     active: number,
@@ -34,8 +35,6 @@ export class DashboardWidgetsStatusesGraphComponent {
     unknown: number
   };
   @Output() removeWidget = new EventEmitter<string>();
-
-  widgetName = 'statusesGraph';
 
   chartOption: EChartsOption = {
     title: {

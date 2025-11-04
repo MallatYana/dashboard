@@ -9,68 +9,21 @@
     }}</h4>
   </div>
 
-  @if (filteredProjects.length === 1 && selectedFilters.id) {
-    <div class="row">
-      <div class="col-md-4 mt-3">
-        <app-dashboard-widgets-database-connection></app-dashboard-widgets-database-connection>
+  <div (cdkDropListDropped)="drop($event)" cdkDropList cdkDropListOrientation="mixed" class="row">
+    @for (widgetName of widgetsOrder; track widgetName) {
+      <div cdkDrag class="col-md-4 mt-3">
+        <app-dashboard-widgets-item
+          [widgetName]="widgetName"
+          [lastUpdateTimeWidgetData]="lastUpdateTimeWidgetData"
+          [totalTasksWidgetData]="totalTasksWidgetData"
+          [taskGraphData]="taskGraphData"
+          [statusWidgetData]="statusWidgetData"
+          [dateRangeWidgetData]="dateRangeWidgetData"
+          (removeWidget)="onRemove($event)"
+        ></app-dashboard-widgets-item>
       </div>
-      <div class="col-md-4 mt-3">
-        <app-dashboard-widgets-status [widgetData]="filteredProjects[0]!.status"></app-dashboard-widgets-status>
-      </div>
-      <div class="col-md-4 mt-3">
-        <app-dashboard-widgets-last-update [widgetData]="lastUpdateTimeWidgetData"></app-dashboard-widgets-last-update>
-      </div>
-      <div class="col-md-4 mt-3">
-        <app-dashboard-widgets-total-tasks [widgetData]="totalTasksWidgetData"></app-dashboard-widgets-total-tasks>
-      </div>
-      <div class="col-md-4 mt-3">
-        <app-dashboard-widgets-date-range [widgetData]="[filteredProjects[0]!.startDate, filteredProjects[0]!.endDate]"></app-dashboard-widgets-date-range>
-      </div>
-      <div class="col-md-4 mt-3">
-        <app-dashboard-widgets-tasks-graph [widgetData]="taskGraphData"></app-dashboard-widgets-tasks-graph>
-      </div>
-    </div>
-  }
-
-  @if (!selectedFilters.id && selectedFilters.status && selectedFilters.status.toString() !== 'undefined') {
-    <div class="row">
-      <div class="col-md-4 mt-3">
-        <app-dashboard-widgets-database-connection></app-dashboard-widgets-database-connection>
-      </div>
-      <div class="col-md-4 mt-3">
-        <app-dashboard-widgets-status [widgetData]="filteredProjects[0]!.status"></app-dashboard-widgets-status>
-      </div>
-      <div class="col-md-4 mt-3">
-        <app-dashboard-widgets-last-update [widgetData]="lastUpdateTimeWidgetData"></app-dashboard-widgets-last-update>
-      </div>
-      <div class="col-md-4 mt-3">
-        <app-dashboard-widgets-total-tasks [widgetData]="totalTasksWidgetData"></app-dashboard-widgets-total-tasks>
-      </div>
-      <div class="col-md-4 mt-3">
-        <app-dashboard-widgets-tasks-graph [widgetData]="taskGraphData"></app-dashboard-widgets-tasks-graph>
-      </div>
-    </div>
-  }
-
-  @if ((!selectedFilters.status || selectedFilters.status.toString() === 'undefined') && !selectedFilters.id) {
-    <div class="row">
-      <div class="col-md-4 mt-3">
-        <app-dashboard-widgets-statuses-graph></app-dashboard-widgets-statuses-graph>
-      </div>
-      <div class="col-md-4 mt-3">
-        <app-dashboard-widgets-database-connection></app-dashboard-widgets-database-connection>
-      </div>
-      <div class="col-md-4 mt-3">
-        <app-dashboard-widgets-last-update [widgetData]="lastUpdateTimeWidgetData"></app-dashboard-widgets-last-update>
-      </div>
-      <div class="col-md-4 mt-3">
-        <app-dashboard-widgets-total-tasks [widgetData]="totalTasksWidgetData"></app-dashboard-widgets-total-tasks>
-      </div>
-      <div class="col-md-4 mt-3">
-        <app-dashboard-widgets-tasks-graph [widgetData]="taskGraphData"></app-dashboard-widgets-tasks-graph>
-      </div>
-    </div>
-  }
+    }
+  </div>
 } @else {
   <div class="p-5 row justify-content-center">
     <div class="col-12">

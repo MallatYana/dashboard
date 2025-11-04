@@ -1,12 +1,7 @@
 import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
-import { DashboardWidgetsLastUpdateComponent } from '../dashboard-widgets-last-update/dashboard-widgets-last-update.component';
-import { DashboardWidgetsTotalTasksComponent } from '../dashboard-widgets-total-tasks/dashboard-widgets-total-tasks.component';
-import { DashboardWidgetsStatusComponent } from '../dashboard-widgets-status/dashboard-widgets-status.component';
-import { DashboardWidgetsDateRangeComponent } from '../dashboard-widgets-date-range/dashboard-widgets-date-range.component';
-import { DashboardWidgetsTasksGraphComponent } from '../dashboard-widgets-tasks-graph/dashboard-widgets-tasks-graph.component';
-import { DashboardWidgetsStatusesGraphComponent } from '../dashboard-widgets-statuses-graph/dashboard-widgets-statuses-graph.component';
-import { DashboardWidgetsDatabaseConnectionComponent } from '../dashboard-widgets-database-connection/dashboard-widgets-database-connection.component';
+import { CdkDrag, CdkDragDrop, CdkDropList, moveItemInArray } from '@angular/cdk/drag-drop';
 import { HelpersNoDataComponent } from '../../../../helpers/helpers-no-data/helpers-no-data.component';
+import { DashboardWidgetsItemComponent } from '../dashboard-widgets-item/dashboard-widgets-item.component';
 import { ProjectStatistics } from '../../../../../core/interfaces/project-statistics';
 import { DashboardFilters } from '../../../../../core/interfaces/dashboard-filters';
 import { ProjectStatuses } from '../../../../../core/interfaces/project-statuses';
@@ -15,13 +10,9 @@ import { ProjectStatuses } from '../../../../../core/interfaces/project-statuses
   selector: 'app-dashboard-widgets-container',
   standalone: true,
   imports: [
-    DashboardWidgetsLastUpdateComponent,
-    DashboardWidgetsTotalTasksComponent,
-    DashboardWidgetsStatusComponent,
-    DashboardWidgetsDateRangeComponent,
-    DashboardWidgetsTasksGraphComponent,
-    DashboardWidgetsStatusesGraphComponent,
-    DashboardWidgetsDatabaseConnectionComponent,
+    CdkDropList,
+    CdkDrag,
+    DashboardWidgetsItemComponent,
     HelpersNoDataComponent
   ],
   templateUrl: './dashboard-widgets-container.component.html',
@@ -31,6 +22,8 @@ export class DashboardWidgetsContainerComponent implements OnChanges {
   @Input() projects: ProjectStatistics[] | null = [];
   @Input() selectedFilters: DashboardFilters | null = { } as DashboardFilters;
   filteredProjects: ProjectStatistics[] = [];
+
+  widgetsOrder = ['databaseConnection', 'status', 'lastUpdate', 'dateRange', 'statusesGraph', 'tasksGraph', 'totalTasks']
 
   ngOnChanges(changes: SimpleChanges) {
     if (changes['selectedFilters'] || changes['projects']) {
@@ -47,6 +40,9 @@ export class DashboardWidgetsContainerComponent implements OnChanges {
     }
   }
 
+  onRemove(name: string) {
+    console.log('removing', name)
+  }
   allStatuses = ProjectStatuses;
 
   lastUpdateTimeWidgetData?: { date: Date, name: string };
@@ -56,11 +52,20 @@ export class DashboardWidgetsContainerComponent implements OnChanges {
     tasksActive: number,
     tasksPending: number
   };
+  statusWidgetData: number | undefined;
+  dateRangeWidgetData: Date[] | undefined;
 
   setData(projects: ProjectStatistics[]) {
     this.totalTasksWidgetData = this.setTotalTasksData(projects);
     this.taskGraphData = this.setTasksGraphData(projects);
     this.lastUpdateTimeWidgetData = this.setLastUpdateTimeWidgetData(projects);
+    if (projects.length === 1) {
+      this.statusWidgetData = projects[0].status;
+      this.dateRangeWidgetData = [projects[0].startDate, projects[0].endDate];
+    } else {
+      this.statusWidgetData = undefined;
+      this.dateRangeWidgetData = undefined;
+    }
   }
 
   setTotalTasksData(projects: ProjectStatistics[]): number {
@@ -91,5 +96,10 @@ export class DashboardWidgetsContainerComponent implements OnChanges {
       }
     });
     return { date: lastDate, name: projects.length > 1 ? lasUpdateName : '' };
+  }
+
+  drop(event: CdkDragDrop<string[]>) {
+    moveItemInArray(this.widgetsOrder, event.previousIndex, event.currentIndex);
+    localStorage.setItem('appDashOrder', this.widgetsOrder.toString());
   }
 }

@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { ProjectService } from '../../../../../core/services/project.service';
 import { HelpersSingleWidgetComponent } from '../../../../helpers/helpers-single-widget/helpers-single-widget.component';
 import { HelpersNoDataComponent } from '../../../../helpers/helpers-no-data/helpers-no-data.component';
@@ -18,12 +18,12 @@ import { Observable, of } from 'rxjs';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class DashboardWidgetsDatabaseConnectionComponent implements OnInit {
+  @Input() widgetName = 'databaseConnection';
   @Output() removeWidget = new EventEmitter<string>();
   constructor(
     private projectService: ProjectService
   ) { }
 
-  widgetName = 'databaseConnection';
   databaseConnection$: Observable<{ connection: string }> = of({ connection: 'Pending' })
 
   ngOnInit() {

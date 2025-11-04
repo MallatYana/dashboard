@@ -14,10 +14,9 @@ import { HelpersNoDataComponent } from '../../../../helpers/helpers-no-data/help
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class DashboardWidgetsTotalTasksComponent {
+  @Input() widgetName = 'totalTasks';
   @Input() widgetData?: number;
   @Output() removeWidget = new EventEmitter<string>();
-
-  widgetName = 'totalTasks';
 
   onRemove() {
     this.removeWidget.emit(this.widgetName);

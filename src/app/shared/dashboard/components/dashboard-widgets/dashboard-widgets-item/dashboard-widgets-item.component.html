@@ -1,0 +1,42 @@
+@switch (widgetName) {
+  @case ('databaseConnection') {
+    <app-dashboard-widgets-database-connection
+      (removeWidget)="onRemove($event)"
+    ></app-dashboard-widgets-database-connection>
+  }
+  @case ('status') {
+    <app-dashboard-widgets-status
+      [widgetData]="statusWidgetData"
+      (removeWidget)="onRemove($event)"
+    ></app-dashboard-widgets-status>
+  }
+  @case ('lastUpdate') {
+    <app-dashboard-widgets-last-update
+      [widgetData]="lastUpdateTimeWidgetData"
+      (removeWidget)="onRemove($event)"
+    ></app-dashboard-widgets-last-update>
+  }
+  @case ('totalTasks') {
+    <app-dashboard-widgets-total-tasks
+      [widgetData]="totalTasksWidgetData"
+      (removeWidget)="onRemove($event)"
+    ></app-dashboard-widgets-total-tasks>
+  }
+  @case ('dateRange') {
+    <app-dashboard-widgets-date-range
+      [widgetData]="dateRangeWidgetData"
+      (removeWidget)="onRemove($event)"
+    ></app-dashboard-widgets-date-range>
+  }
+  @case ('statusesGraph') {
+    <app-dashboard-widgets-statuses-graph
+      (removeWidget)="onRemove($event)"
+    ></app-dashboard-widgets-statuses-graph>
+  }
+  @case ('tasksGraph') {
+    <app-dashboard-widgets-tasks-graph
+      [widgetData]="taskGraphData"
+      (removeWidget)="onRemove($event)"
+    ></app-dashboard-widgets-tasks-graph>
+  }
+}

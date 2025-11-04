@@ -16,10 +16,9 @@ import { DatePipe } from '@angular/common';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class DashboardWidgetsDateRangeComponent {
+  @Input() widgetName = 'dateRange';
   @Input() widgetData?: Date[];
   @Output() removeWidget = new EventEmitter<string>();
-
-  widgetName = 'dateRange';
 
   onRemove() {
     this.removeWidget.emit(this.widgetName);

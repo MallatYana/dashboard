@@ -25,14 +25,13 @@ echarts.use([BarChart, GridComponent, CanvasRenderer]);
   providers: [ provideEcharts()],
 })
 export class DashboardWidgetsTasksGraphComponent implements OnChanges {
+  @Input() widgetName = 'tasksGraph';
   @Input() widgetData?: {
     tasksCompleted: number,
     tasksActive: number,
     tasksPending: number
   };
   @Output() removeWidget = new EventEmitter<string>();
-
-  widgetName = 'tasksGraph';
 
   chartOption: EChartsOption = { } as EChartsOption;
 

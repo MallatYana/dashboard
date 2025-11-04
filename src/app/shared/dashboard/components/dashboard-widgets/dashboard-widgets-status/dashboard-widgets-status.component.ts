@@ -17,10 +17,9 @@ import { ProjectStatuses } from '../../../../../core/interfaces/project-statuses
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class DashboardWidgetsStatusComponent {
+  @Input() widgetName = 'status';
   @Input() widgetData?: number;
   @Output() removeWidget = new EventEmitter<string>();
-
-  widgetName = 'status';
 
   textColors = ['black', 'warning', 'info', 'success', 'danger', 'secondary', 'black']
   statuses = ProjectStatuses;
