@@ -1,4 +1,4 @@
-<app-helpers-single-widget>
+<app-helpers-single-widget (remove)="onRemove()">
   @if (widgetData) {
     <div echarts [options]="chartOption" class="chart"></div>
   } @else {

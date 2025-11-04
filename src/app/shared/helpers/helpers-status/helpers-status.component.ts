@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
-import { ProjectStatuses } from '../../../core/interfaces/project-statuses';
+import { ProjectStatuses } from '../../../core/constants/project-statuses';
 
 @Component({
   selector: 'app-helpers-status',

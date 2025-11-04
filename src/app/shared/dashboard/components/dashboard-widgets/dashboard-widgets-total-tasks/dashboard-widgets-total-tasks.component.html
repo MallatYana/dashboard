@@ -1,4 +1,4 @@
-<app-helpers-single-widget>
+<app-helpers-single-widget (remove)="onRemove()">
   <div class="p-4 text-center">
     @if (widgetData) {
     <h3 class="display-5 fw-bold">{{ widgetData }}</h3>

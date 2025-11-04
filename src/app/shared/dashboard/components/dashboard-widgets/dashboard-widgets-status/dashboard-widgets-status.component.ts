@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from 
 import { CommonModule } from '@angular/common';
 import { HelpersSingleWidgetComponent } from '../../../../helpers/helpers-single-widget/helpers-single-widget.component';
 import { HelpersNoDataComponent } from '../../../../helpers/helpers-no-data/helpers-no-data.component';
-import { ProjectStatuses } from '../../../../../core/interfaces/project-statuses';
+import { ProjectStatuses } from '../../../../../core/constants/project-statuses';
 
 @Component({
   selector: 'app-dashboard-widgets-status',

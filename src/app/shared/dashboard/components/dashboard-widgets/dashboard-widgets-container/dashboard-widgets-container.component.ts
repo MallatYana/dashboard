@@ -1,10 +1,11 @@
-import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, Input, OnChanges, SimpleChanges, OnInit } from '@angular/core';
 import { CdkDrag, CdkDragDrop, CdkDropList, moveItemInArray } from '@angular/cdk/drag-drop';
 import { HelpersNoDataComponent } from '../../../../helpers/helpers-no-data/helpers-no-data.component';
 import { DashboardWidgetsItemComponent } from '../dashboard-widgets-item/dashboard-widgets-item.component';
 import { ProjectStatistics } from '../../../../../core/interfaces/project-statistics';
 import { DashboardFilters } from '../../../../../core/interfaces/dashboard-filters';
-import { ProjectStatuses } from '../../../../../core/interfaces/project-statuses';
+import { ProjectStatuses } from '../../../../../core/constants/project-statuses';
+import { WidgetList } from '../../../../../core/constants/widget-list';
 
 @Component({
   selector: 'app-dashboard-widgets-container',
@@ -18,12 +19,12 @@ import { ProjectStatuses } from '../../../../../core/interfaces/project-statuses
   templateUrl: './dashboard-widgets-container.component.html',
   styleUrl: './dashboard-widgets-container.component.scss'
 })
-export class DashboardWidgetsContainerComponent implements OnChanges {
+export class DashboardWidgetsContainerComponent implements OnChanges, OnInit {
   @Input() projects: ProjectStatistics[] | null = [];
   @Input() selectedFilters: DashboardFilters | null = { } as DashboardFilters;
   filteredProjects: ProjectStatistics[] = [];
 
-  widgetsOrder = ['databaseConnection', 'status', 'lastUpdate', 'dateRange', 'statusesGraph', 'tasksGraph', 'totalTasks']
+  widgetsOrder: string[] = [];
 
   ngOnChanges(changes: SimpleChanges) {
     if (changes['selectedFilters'] || changes['projects']) {
@@ -40,9 +41,27 @@ export class DashboardWidgetsContainerComponent implements OnChanges {
     }
   }
 
-  onRemove(name: string) {
-    console.log('removing', name)
+  ngOnInit() {
+    this.checkAndApplyOrder();
   }
+
+  onRemoveWidget(name: string) {
+    this.widgetsOrder = this.widgetsOrder.filter(item => item !== name);
+    this.changeOrder(this.widgetsOrder);
+  }
+  checkAndApplyOrder() {
+    this.widgetsOrder = localStorage.getItem('appDashOrder')
+      ? localStorage.getItem('appDashOrder')!.split(',')
+      : WidgetList
+  }
+  changeOrder(orderArr: string[]) {
+    localStorage.setItem('appDashOrder', orderArr.toString());
+  }
+  drop(event: CdkDragDrop<string[]>) {
+    moveItemInArray(this.widgetsOrder, event.previousIndex, event.currentIndex);
+    this.changeOrder(this.widgetsOrder);
+  }
+
   allStatuses = ProjectStatuses;
 
   lastUpdateTimeWidgetData?: { date: Date, name: string };
@@ -96,10 +115,5 @@ export class DashboardWidgetsContainerComponent implements OnChanges {
       }
     });
     return { date: lastDate, name: projects.length > 1 ? lasUpdateName : '' };
-  }
-
-  drop(event: CdkDragDrop<string[]>) {
-    moveItemInArray(this.widgetsOrder, event.previousIndex, event.currentIndex);
-    localStorage.setItem('appDashOrder', this.widgetsOrder.toString());
   }
 }

@@ -68,4 +68,8 @@ export class DashboardWidgetsStatusesGraphComponent {
       },
     ],
   } as EChartsOption;
+
+  onRemove() {
+    this.removeWidget.emit(this.widgetName);
+  }
 }

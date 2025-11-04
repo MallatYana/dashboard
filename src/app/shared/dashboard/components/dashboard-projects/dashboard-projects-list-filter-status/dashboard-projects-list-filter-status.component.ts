@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { DashboardFilters } from '../../../../../core/interfaces/dashboard-filters';
-import { ProjectStatuses } from '../../../../../core/interfaces/project-statuses';
+import { ProjectStatuses } from '../../../../../core/constants/project-statuses';
 import { HelpersStatusComponent } from '../../../../helpers/helpers-status/helpers-status.component';
 
 @Component({

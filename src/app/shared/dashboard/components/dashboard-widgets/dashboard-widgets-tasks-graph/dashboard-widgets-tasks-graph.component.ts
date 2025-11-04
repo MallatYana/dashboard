@@ -71,4 +71,8 @@ export class DashboardWidgetsTasksGraphComponent implements OnChanges {
       } as EChartsOption;
     }
   }
+
+  onRemove() {
+    this.removeWidget.emit(this.widgetName);
+  }
 }
