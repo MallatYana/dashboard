@@ -1,3 +1,13 @@
 .single-widget-size {
   min-height: 400px !important;
 }
+.btn-custom {
+  outline: none;
+  border: none;
+  background: inherit;
+  opacity: 0.5;
+    &:hover {
+      opacity: 1;
+      transition: opacity 0.6s, transform 0.5s;
+    }
+}
