@@ -2,7 +2,7 @@
 
 Demo: https://mallatyana.github.io/dashboard/dashboard
 
-Architecture:
+**Architecture**:  
 The architecture is based on dividing the application into two main sections: the project list and the widget list. Since all data (except for the Database Connection widget, which imitates a real-time update) is loaded at once rather than being fetched from the backend by filter, we can pass it directly to both sections using the AsyncPipe.
 
 Filters are placed in the project section and managed via a BehaviorSubject, whose value is consumed through the AsyncPipe. Based on these values, query parameters are generated using Location to avoid unnecessary re-rendering.
@@ -21,7 +21,7 @@ The project contains a pie chart with task status distribution (ngx-Echarts). ng
 
 I also decided not to use Signals because I have limited experience with them (only one month, as stated in my resume), and using them would slow down development.
 
-AI was used to quickly find small solutions, for example:
+**AI** was used to quickly find small solutions, for example:
 - Figuring out why DatePipe didn’t work before I cleaned up the data.
 - Suggesting a better way to build the QueryParamsObject.
 - On a more trivial note, when I was too lazy to Google, it suggested how to write similar Bootstrap-style bindings in [ngClass] (e.g., [ngClass]="'col-' + customColumns").
