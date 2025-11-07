@@ -3,7 +3,7 @@
   [(ngModel)]="selectedStatus"
   (ngModelChange)="onStatusChange($event)"
 >
-  <option [value]="undefined">Select status</option>
+  <option [value]="0">Select status</option>
   @for (status of allStatuses; track status) {
     <option [value]="status">
       <app-helpers-status [status]="status"></app-helpers-status>

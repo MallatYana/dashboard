@@ -16,16 +16,21 @@ export class FiltersService {
 
   setUrlFilters() {
     const filters = this.urlService.parseUrl();
-    this.filter$.next({ id: '', ...filters } as DashboardFilters)
+    this.filter$.next(this.cleanFilters({ id: '', ...filters }))
   }
 
   setFilters(filters: Partial<DashboardFilters>) {
     const currentFilters = this.getFilters();
     const newFilters = filters.hasOwnProperty('status')
-      ? { id: '', ...filters } as DashboardFilters
-      : { ...currentFilters, ...filters };
+      ? this.cleanFilters({ id: '', ...filters })
+      : this.cleanFilters({ ...currentFilters, ...filters });
     this.filter$.next(newFilters);
     this.urlService.updateUlrByQueryParams(newFilters);
+  }
+
+  cleanFilters(filters: Partial<DashboardFilters>): DashboardFilters {
+    if (filters.status + '' === 'undefined') filters.status = 0;
+    return filters as DashboardFilters;
   }
 
   getFilters() {

@@ -29,7 +29,7 @@ export class UrlService {
 
   createQueryParams<T extends object>(params: T) {
     const nweParams = Object.fromEntries(Object.entries(params)
-      .filter(([key, value]) => !!value && value.toString() !== 'undefined'))
+      .filter(([key, value]) => !!value && !!+value))
     return nweParams;
   }
 }

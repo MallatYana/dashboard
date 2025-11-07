@@ -11,10 +11,9 @@
     @for (project of projects; track project) {
       @if (
         !selectedFilters || selectedFilters && (
-          selectedFilters.status === undefined || selectedFilters.status.toString() === 'undefined' || selectedFilters.status === project.status
+          !+selectedFilters.status || selectedFilters.status === project.status
           )
         ) {
-        <!--я перепишу этот ужасный ужас -->
         <div
           class="pointer hover-list"
           (click)="setActiveTab(project.id)"

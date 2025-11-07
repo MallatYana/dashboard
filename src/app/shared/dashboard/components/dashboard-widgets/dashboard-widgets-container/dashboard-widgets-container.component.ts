@@ -32,7 +32,7 @@ export class DashboardWidgetsContainerComponent implements OnChanges, OnInit {
     if (changes['selectedFilters'] || changes['projects']) {
       if (this.projects && this.selectedFilters) {
         this.filteredProjects = this.projects.filter(project =>
-          (!this.selectedFilters!.status || this.selectedFilters!.status.toString() === 'undefined') && !this.selectedFilters!.id
+          (!this.selectedFilters!.status || !+this.selectedFilters!.status) && !this.selectedFilters!.id
           || !this.selectedFilters!.id && this.selectedFilters!.status === project.status
           || this.selectedFilters!.id && this.selectedFilters!.id === project.id
         )
@@ -85,7 +85,7 @@ export class DashboardWidgetsContainerComponent implements OnChanges, OnInit {
     this.taskGraphData = this.setTasksGraphData(projects);
     this.lastUpdateTimeWidgetData = this.setLastUpdateTimeWidgetData(projects);
     console.log(this.selectedFilters?.status)
-    this.statusWidgetData = this.selectedFilters && (this.selectedFilters.status && this.selectedFilters.status.toString() !== 'undefined' || this.selectedFilters.id)
+    this.statusWidgetData = this.selectedFilters && (!!+this.selectedFilters.status || this.selectedFilters.id)
       ? projects[0].status
       : undefined;
     this.dateRangeWidgetData = projects.length === 1
