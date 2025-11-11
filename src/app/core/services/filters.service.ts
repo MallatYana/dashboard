@@ -25,7 +25,7 @@ export class FiltersService {
       ? this.cleanFilters({ id: '', ...filters })
       : this.cleanFilters({ ...currentFilters, ...filters });
     this.filter$.next(newFilters);
-    this.urlService.updateUlrByQueryParams(newFilters);
+    this.urlService.updateUrlByQueryParams(newFilters);
   }
 
   cleanFilters(filters: Partial<DashboardFilters>): DashboardFilters {

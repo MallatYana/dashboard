@@ -84,7 +84,6 @@ export class DashboardWidgetsContainerComponent implements OnChanges, OnInit {
     this.totalTasksWidgetData = this.setTotalTasksData(projects);
     this.taskGraphData = this.setTasksGraphData(projects);
     this.lastUpdateTimeWidgetData = this.setLastUpdateTimeWidgetData(projects);
-    console.log(this.selectedFilters?.status)
     this.statusWidgetData = this.selectedFilters && (!!+this.selectedFilters.status || this.selectedFilters.id)
       ? projects[0].status
       : undefined;
@@ -113,13 +112,13 @@ export class DashboardWidgetsContainerComponent implements OnChanges, OnInit {
 
   setLastUpdateTimeWidgetData(projects: ProjectStatistics[]): { date: Date, name: string } {
     let lastDate = projects[0].lastUpdateDate;
-    let lasUpdateName = projects[0].name;
+    let lastUpdateName = projects[0].name;
     projects.forEach(project => {
       if (project.lastUpdateDate > lastDate) {
         lastDate = project.lastUpdateDate;
-        lasUpdateName = project.name;
+        lastUpdateName = project.name;
       }
     });
-    return { date: lastDate, name: projects.length > 1 ? lasUpdateName : '' };
+    return { date: lastDate, name: projects.length > 1 ? lastUpdateName : '' };
   }
 }

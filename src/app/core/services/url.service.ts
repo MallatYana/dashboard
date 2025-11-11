@@ -13,7 +13,7 @@ export class UrlService {
     private location: Location,
   ) { }
 
-  updateUlrByQueryParams(params: Object) {
+  updateUrlByQueryParams(params: Object) {
     const newParams = this.createQueryParams(params);
     const queryParamsTree = this.router.createUrlTree([], {
       queryParams: { ...newParams }
@@ -28,8 +28,8 @@ export class UrlService {
   }
 
   createQueryParams<T extends object>(params: T) {
-    const nweParams = Object.fromEntries(Object.entries(params)
+    const newParams = Object.fromEntries(Object.entries(params)
       .filter(([key, value]) => !!value && !!+value))
-    return nweParams;
+    return newParams;
   }
 }
